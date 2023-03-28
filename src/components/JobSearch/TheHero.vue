@@ -19,8 +19,8 @@
     </section>
 
     <SpotLight class="flex flex-row justify-center pb-16">
-      <template #default="{ img, title, description }"
-        ><routerlink
+      <template #default="{ img, title, description }">
+        <routerlink
           to="/jobs/results"
           class="mx-5 flex h-96 w-72 flex-col rounded-lg border bg-brand-grey-2"
         >
@@ -36,8 +36,8 @@
             class="px-6 pb-4 text-sm text-brand-blue-1"
             >See Jobs</router-link
           >
-        </routerlink></template
-      >
+        </routerlink>
+      </template>
     </SpotLight>
   </main>
 </template>

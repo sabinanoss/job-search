@@ -25,8 +25,9 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 import { useJobsStore, UNIQUE_ORGANIZATIONS } from "@/stores/jobs.js";
+import { useUserStore, ADD_SELECTED_ORGANIZATIONS } from "@/stores/user.js";
 
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 
@@ -44,8 +45,10 @@ export default {
     ...mapState(useJobsStore, [UNIQUE_ORGANIZATIONS]),
   },
   methods: {
+    ...mapActions(useUserStore, [ADD_SELECTED_ORGANIZATIONS]),
     selectOrganization() {
-      console.log(this.selectOrganizations);
+      this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations);
+      this.$router.push({ name: "JobResults" });
     },
   },
 };

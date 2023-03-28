@@ -10,6 +10,7 @@
         </div>
       </div>
       <JobFiltersSideBarOrganizations />
+      <JobFiltersSideBarJobTypes />
     </section>
   </div>
 </template>
@@ -17,12 +18,14 @@
 <script>
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import JobFiltersSideBarOrganizations from "@/components/JobResults/JobFiltersSideBar/JobFiltersSideBarOrganizations.vue";
+import JobFiltersSideBarJobTypes from "@/components/JobResults/JobFiltersSideBar/JobFiltersSideBarJobTypes.vue";
 
 export default {
   name: "JobFiltersSideBar",
   components: {
     ActionButton,
     JobFiltersSideBarOrganizations,
+    JobFiltersSideBarJobTypes,
   },
 };
 </script>
