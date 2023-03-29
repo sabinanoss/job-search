@@ -3,22 +3,21 @@ import userEvent from "@testing-library/user-event";
 import { RouterLinkStub } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 
+import { useRoute } from "vue-router";
+vi.mock("vue-router");
+
 import MainNav from "@/components/Navigation/MainNav.vue";
 import { useUserStore } from "@/stores/user";
+import { vi } from "vitest";
 
 describe("MainNav", () => {
   const renderMainNav = () => {
     const pinia = createTestingPinia();
-    const $route = {
-      name: "Home",
-    };
+    useRoute.mockReturnValue({ name: "Home" });
 
     render(MainNav, {
       global: {
         plugins: [pinia],
-        mocks: {
-          $route,
-        },
         stubs: {
           FontAwesome: true,
           RouterLink: RouterLinkStub,

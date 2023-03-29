@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/JobResults/JobFiltersSideBar/JobFiltersSideBarJobTypes.vue</title>
+    <title>Code coverage report for JobListings.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">components/JobResults/JobFiltersSideBar</a> JobFiltersSideBarJobTypes.vue</h1>
+        <h1><a href="index.html">All files</a> JobListings.vue</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -118,7 +118,14 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -157,76 +164,90 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;CollapsibleAccordion header="Job Types"
-    &gt;&lt;div class="mt-5"&gt;
-      &lt;fieldset&gt;
-        &lt;ul class="flex flex-row flex-wrap"&gt;
-          &lt;li
-            v-for="jobType in UNIQUE_JOB_TYPES"
-            :key="jobType"
-            class="h-8 w-1/2"
+  &lt;main class="flex-auto bg-brand-grey-2 p-8"&gt;
+    &lt;ol&gt;
+      &lt;JobListing v-for="job in displayedJobs" :key="job.id" :job="job" /&gt;
+    &lt;/ol&gt;
+&nbsp;
+    &lt;div class="mx-auto mt-8"&gt;
+      &lt;div class="flex flex-row flex-nowrap"&gt;
+        &lt;p class="flex-grow text-sm"&gt;Page {{ currentPage }}&lt;/p&gt;
+&nbsp;
+        &lt;div class="flex items-center justify-center"&gt;
+          &lt;router-link
+            v-if="previousPage"
+            role="link"
+            :to="{ name: 'JobResults', query: { page: previousPage } }"
+            class="mx-3 text-sm font-semibold text-brand-blue-1"
+            &gt;Previous&lt;/router-link
           &gt;
-            &lt;input
-              :id="jobType"
-              v-model="selectedJobTypes"
-              :value="jobType"
-              type="checkbox"
-              class="mr-3"
-              @change="selectJobTypes"
-            /&gt;
-            &lt;label :for="jobType"&gt;{{ jobType }}&lt;/label&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/fieldset&gt;
+&nbsp;
+          &lt;router-link
+            v-if="nextPage"
+            role="link"
+            :to="{ name: 'JobResults', query: { page: nextPage } }"
+            class="mx-3 text-sm font-semibold text-brand-blue-1"
+            &gt;Next&lt;/router-link
+          &gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/CollapsibleAccordion&gt;
+  &lt;/main&gt;
 &lt;/template&gt;
 &nbsp;
-&lt;script&gt;
-import { mapActions, mapState } from "pinia";
-import { useJobsStore, UNIQUE_JOB_TYPES } from "@/stores/jobs.js";
-import { useUserStore, ADD_SELECTED_JOB_TYPES } from "@/stores/user.js";
+&lt;script setup&gt;
+import { computed, onMounted } from "vue";
+import { useRoute } from "vue-router";
 &nbsp;
-import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
+import JobListing from "@/components/JobResults/JobListing.vue";
+import { useJobsStore } from "@/stores/jobs";
 &nbsp;
-export default {
-  name: "JobFiltersSideBarJobTypes",
-  components: {
-    CollapsibleAccordion,
-  },
-  data() {
-    return {
-      selectedJobTypes: [],
-    };
-  },
-  computed: {
-    ...mapState(useJobsStore, [UNIQUE_JOB_TYPES]),
-  },
-  methods: {
-    ...mapActions(useUserStore, [ADD_SELECTED_JOB_TYPES]),
-    selectJobTypes() {
-      this.ADD_SELECTED_JOB_TYPES(this.selectedJobTypes);
-      this.$router.push({ name: "JobResults" });
-    },
-  },
-};
+import usePreviousAndNextPages from "@/composables/usePreviousAndNextPages";
+&nbsp;
+const jobsStore = useJobsStore();
+onMounted(jobsStore.FETCH_JOBS);
+&nbsp;
+const FILTERED_JOBS = computed(() =&gt; jobsStore.FILTERED_JOBS);
+&nbsp;
+const route = useRoute();
+const currentPage = computed(() =&gt; Number.parseInt(route.query.page || "1"));
+const maxPage = computed(() =&gt; Math.ceil(FILTERED_JOBS.value.length / 10));
+&nbsp;
+const { previousPage, nextPage } = usePreviousAndNextPages(
+  currentPage,
+  maxPage
+);
+&nbsp;
+const displayedJobs = computed(() =&gt; {
+  const pageNumber = currentPage.value;
+  const firstJobIndex = (pageNumber - 1) * 10;
+  const lastJobIndex = pageNumber * 10;
+  return FILTERED_JOBS.value.slice(firstJobIndex, lastJobIndex);
+});
 &lt;/script&gt;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -235,16 +256,16 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-27T15:19:55.531Z
+                at 2023-03-29T15:51:11.413Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     

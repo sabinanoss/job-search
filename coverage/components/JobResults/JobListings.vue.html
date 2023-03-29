@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/10</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -125,20 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -183,13 +170,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -197,26 +185,12 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;main class="flex-auto bg-brand-grey-2 p-8"&gt;
     &lt;ol&gt;
-      &lt;JobListing v-for="job in displayJobs" :key="job.id" :job="job" /&gt;
+      &lt;JobListing v-for="job in displayedJobs" :key="job.id" :job="job" /&gt;
     &lt;/ol&gt;
 &nbsp;
     &lt;div class="mx-auto mt-8"&gt;
@@ -245,48 +219,35 @@
   &lt;/main&gt;
 &lt;/template&gt;
 &nbsp;
-&lt;script&gt;
-import { mapActions, mapState } from "pinia";
+&lt;script setup&gt;
+import { computed, onMounted } from "vue";
+import { useRoute } from "vue-router";
 &nbsp;
 import JobListing from "@/components/JobResults/JobListing.vue";
-import { useJobsStore, FETCH_JOBS, FILTERED_JOBS } from "@/stores/jobs";
+import { useJobsStore } from "@/stores/jobs";
 &nbsp;
-export default {
-  name: "JobListings",
-  components: {
-    JobListing,
-  },
-  computed: {
-    currentPage() {
-      return Number.parseInt(this.$route.query.page || "1");
-    },
-    previousPage() {
-      const previousPage = this.currentPage - 1;
-      const firstPage = 1;
-      return previousPage &gt;= firstPage ? previousPage : undefined;
-    },
-    ...mapState(useJobsStore, {
-      FILTERED_JOBS,
-      nextPage() {
-        const nextPage = this.currentPage + 1;
-        const maxPage = Math.ceil(this.FILTERED_JOBS.length / 10);
-        return nextPage &lt;= maxPage ? nextPage : undefined;
-      },
-      displayJobs() {
-        const pageNumber = this.currentPage;
-        const firstJobIndex = (pageNumber - 1) * 10;
-        const lastJobIndex = pageNumber * 10;
-        return this.FILTERED_JOBS.slice(firstJobIndex, lastJobIndex);
-      },
-    }),
-  },
-  async mounted() {
-    this.FETCH_JOBS();
-  },
-  methods: {
-    ...mapActions(useJobsStore, [FETCH_JOBS]),
-  },
-};
+import usePreviousAndNextPages from "@/composables/usePreviousAndNextPages";
+&nbsp;
+const jobsStore = useJobsStore();
+onMounted(jobsStore.FETCH_JOBS);
+&nbsp;
+const FILTERED_JOBS = computed(() =&gt; jobsStore.FILTERED_JOBS);
+&nbsp;
+const route = useRoute();
+const currentPage = computed(() =&gt; Number.parseInt(route.query.page || "1"));
+const maxPage = computed(() =&gt; Math.ceil(FILTERED_JOBS.value.length / 10));
+&nbsp;
+const { previousPage, nextPage } = usePreviousAndNextPages(
+  currentPage,
+  maxPage
+);
+&nbsp;
+const displayedJobs = computed(() =&gt; {
+  const pageNumber = currentPage.value;
+  const firstJobIndex = (pageNumber - 1) * 10;
+  const lastJobIndex = pageNumber * 10;
+  return FILTERED_JOBS.value.slice(firstJobIndex, lastJobIndex);
+});
 &lt;/script&gt;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -295,7 +256,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-27T15:13:35.899Z
+                at 2023-03-29T15:51:23.003Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
