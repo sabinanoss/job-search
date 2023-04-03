@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>51/51</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/51</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
@@ -114,7 +114,17 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -148,6 +158,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -157,49 +170,36 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;CollapsibleAccordion :header="header"
-    &gt;&lt;div class="mt-5"&gt;
-      &lt;fieldset&gt;
-        &lt;ul class="flex flex-row flex-wrap"&gt;
-          &lt;li v-for="value in uniqueValues" :key="value" class="h-8 w-1/2"&gt;
-            &lt;input
-              :id="value"
-              v-model="selectedValues"
-              :value="value"
-              type="checkbox"
-              class="mr-3"
-              @change="selectValue"
-            /&gt;
-            &lt;label :for="value"&gt;{{ value }}&lt;/label&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/fieldset&gt;
-    &lt;/div&gt;
-  &lt;/CollapsibleAccordion&gt;
+  &lt;div class="mt-5"&gt;
+    &lt;fieldset&gt;
+      &lt;ul class="flex flex-row flex-wrap"&gt;
+        &lt;li v-for="value in uniqueValues" :key="value" class="h-8 w-1/2"&gt;
+          &lt;input
+            :id="value"
+            v-model="selectedValues"
+            :value="value"
+            type="checkbox"
+            class="mr-3"
+            @change="selectValue"
+          /&gt;
+          &lt;label :for="value"&gt;{{ value }}&lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/fieldset&gt;
+  &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
-&lt;script setup&gt;
+&lt;script lang="ts" setup&gt;
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 &nbsp;
-import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
+import { CLEAR_USER_JOB_FILTER_SELECTIONS, useUserStore } from "@/stores/user";
 &nbsp;
 const props = defineProps({
-  header: {
-    type: String,
-    required: true,
-  },
   uniqueValues: {
-    type: Set,
+    type: [Set&lt;string&gt;, Array&lt;string&gt;],
     required: true,
   },
   action: {
@@ -208,13 +208,22 @@ const props = defineProps({
   },
 });
 &nbsp;
-const selectedValues = ref([]);
+const selectedValues = ref&lt;string[]&gt;([]);
 const router = useRouter();
 &nbsp;
 const selectValue = () =&gt; {
   props.action(selectedValues.value);
   router.push({ name: "JobResults" });
 };
+&nbsp;
+const userStore = useUserStore();
+userStore.$onAction(({ after, name }) =&gt; {
+  after(() =&gt; {
+    if (name === CLEAR_USER_JOB_FILTER_SELECTIONS) {
+      selectedValues.value = [];
+    }
+  });
+});
 &lt;/script&gt;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -223,7 +232,7 @@ const selectValue = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-29T15:45:01.231Z
+                at 2023-04-03T18:41:20.790Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
