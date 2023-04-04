@@ -8,6 +8,7 @@ Google Careers clone.
 - Vite
 - Vitest
 - Pinia
+- TypeScript
 
 ## Recommended IDE Setup
 
