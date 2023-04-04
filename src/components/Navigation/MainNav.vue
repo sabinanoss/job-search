@@ -47,10 +47,10 @@ import TheSubnav from "@/components/Navigation/TheSubnav.vue";
 
 const menuItems = ref([
   { text: "Teams", url: "/teams" },
-  { text: "Locations", url: "/" },
-  { text: "Benefits", url: "/" },
+  { text: "Locations", url: "/locations" },
+  { text: "Benefits", url: "/benefits" },
   { text: "Jobs", url: "/jobs/results" },
-  { text: "Students", url: "/" },
+  { text: "Students", url: "/students" },
 ]);
 
 const userStore = useUserStore();
