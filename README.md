@@ -3,6 +3,7 @@
 Google Careers clone.
 
 # Stack
+
 - Vue 3
 - TailwindCSS
 - Vite
@@ -24,16 +25,10 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compile, Hot-Reload and run JSON-server for Development
 
 ```sh
 npm run dev
-```
-
-### Run json-server
-
-```sh
-npm run backend
 ```
 
 ### Compile and Minify for Production
